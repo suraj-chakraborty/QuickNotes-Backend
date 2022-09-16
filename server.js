@@ -1,11 +1,13 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const Document = require("./Document");
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect(
+  "mongodb+srv://Quicknotes:Quicknotes@quicknotes.rfuqvid.mongodb.net/quick-notes?retryWrites=true&w=majority"
+);
 
 const io = require("socket.io")(process.env.PORT, {
   cors: {
-    origin: process.env.REACT_CLIENT_URL,
+    origin: "https://quick-notes-frontend1.vercel.app/",
     methods: ["GET", "POST"],
     allowedHeaders: [
       "Origin",
