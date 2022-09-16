@@ -6,6 +6,7 @@ mongoose.connect(
 );
 
 const io = require("socket.io")(process.env.PORT || 8080, {
+  transports: ["websocket"],
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
