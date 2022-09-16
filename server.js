@@ -5,9 +5,9 @@ mongoose.connect(
   "mongodb+srv://Quicknotes:Quicknotes@quicknotes.rfuqvid.mongodb.net/quick-notes?retryWrites=true&w=majority"
 );
 
-const io = require("socket.io")(process.env.PORT, {
+const io = require("socket.io")(process.env.PORT || 8080, {
   cors: {
-    origin: "https://quick-notes-frontend1.vercel.app/",
+    origin: "https://quick-notes-frontend.vercel.app",
     methods: ["GET", "POST"],
     allowedHeaders: [
       "Origin",
