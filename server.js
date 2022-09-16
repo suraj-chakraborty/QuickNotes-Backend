@@ -9,7 +9,9 @@ const io = require("socket.io")(process.env.PORT || 8080, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
+
     allowedHeaders: [
+      "Access-Control-Allow-Origin",
       "Origin",
       "X-Requested-With",
       "Accept",
