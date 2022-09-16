@@ -7,7 +7,7 @@ mongoose.connect(
 
 const io = require("socket.io")(process.env.PORT || 8080, {
   cors: {
-    origin: "https://quick-notes-frontend.vercel.app",
+    origin: "*",
     methods: ["GET", "POST"],
     allowedHeaders: [
       "Origin",
