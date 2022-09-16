@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Document = require("./Document");
 mongoose.connect(process.env.MONGODB_URL);
 
-const io = require("socket.io")(process.env.PORT || 8080, {
+const io = require("socket.io")(process.env.PORT, {
   cors: {
     origin: process.env.REACT_CLIENT_URL,
     methods: ["GET", "POST"],
