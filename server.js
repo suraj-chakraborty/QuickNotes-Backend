@@ -10,21 +10,6 @@ mongoose.connect(
 const io = require("socket.io")(process.env.PORT || 8080, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"],
-    withCredentials: true,
-    extraHeaders: {
-      "Access-Control-Allow-Origin": true,
-    },
-
-    allowedHeaders: [
-      ,
-      "Origin",
-      "X-Requested-With",
-      "Accept",
-      "Content-Type",
-      "Authorization",
-    ],
-    credentials: true,
   },
 });
 
