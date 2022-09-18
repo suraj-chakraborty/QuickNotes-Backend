@@ -11,6 +11,7 @@ const io = require("socket.io")(process.env.PORT || 8080, {
   cors: {
     origin: "*",
     method: ["GET", "POST"],
+    credentials: true,
   },
 });
 io.use(cors());
