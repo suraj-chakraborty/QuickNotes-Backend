@@ -2,15 +2,14 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const Document = require("./Document");
 const cors = require("cors");
+
 mongoose.connect(
   "mongodb+srv://Quicknotes:Quicknotes@quicknotes.rfuqvid.mongodb.net/quick-notes?retryWrites=true&w=majority"
 );
 
-const io = require("socket.io")("https://cute-pear-newt-tux.cyclic.app/", {
+const io = require("socket.io")(process.env.PORT || 8080, {
   cors: {
     origin: "*",
-    method: ["POST", "GET"],
-    credentials: true,
   },
 });
 io.use(cors());
@@ -31,7 +30,6 @@ io.on("connection", (socket) => {
     });
   });
 });
-
 // find if the documentid exist else create a new document
 async function Focd(id) {
   if (id == null) return;
