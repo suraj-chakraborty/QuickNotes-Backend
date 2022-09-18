@@ -12,6 +12,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
+    "http": "0.0.1-security",
     "mongoose": "^6.0.8",
     "nodemon": "^2.0.13",
     "socket.io": "^4.2.0"
