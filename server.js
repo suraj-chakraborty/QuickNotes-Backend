@@ -13,8 +13,9 @@ const io = require("socket.io")("https://cute-pear-newt-tux.cyclic.app/", {
     credentials: true,
   },
 });
-const defaultValue = "";
 io.use(cors());
+const defaultValue = "";
+
 io.on("connection", (socket) => {
   socket.on("get-document", async (documentId) => {
     const document = await Focd(documentId);
