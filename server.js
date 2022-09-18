@@ -6,7 +6,7 @@ mongoose.connect(
   "mongodb+srv://Quicknotes:Quicknotes@quicknotes.rfuqvid.mongodb.net/quick-notes?retryWrites=true&w=majority"
 );
 
-const io = require("socket.io")(process.env.PORT || 8080, {
+const io = require("socket.io")("https://cute-pear-newt-tux.cyclic.app/", {
   cors: {
     origin: "*",
     method: ["POST", "GET"],
