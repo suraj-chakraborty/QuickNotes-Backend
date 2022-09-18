@@ -2,7 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const Document = require("./Document");
 const cors = require("cors");
-io.use(cors());
+
 mongoose.connect(
   "mongodb+srv://Quicknotes:Quicknotes@quicknotes.rfuqvid.mongodb.net/quick-notes?retryWrites=true&w=majority"
 );
@@ -12,7 +12,7 @@ const io = require("socket.io")(process.env.PORT || 8080, {
     origin: "*",
   },
 });
-
+io.use(cors());
 const defaultValue = "";
 
 io.on("connection", (socket) => {
