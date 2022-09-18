@@ -14,7 +14,7 @@ const io = require("socket.io")(process.env.PORT || 8080, {
   },
 });
 const defaultValue = "";
-
+io.use(cors());
 io.on("connection", (socket) => {
   socket.on("get-document", async (documentId) => {
     const document = await Focd(documentId);
@@ -30,7 +30,7 @@ io.on("connection", (socket) => {
     });
   });
 });
-io.use(cors());
+
 // find if the documentid exist else create a new document
 async function Focd(id) {
   if (id == null) return;
