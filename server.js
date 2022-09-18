@@ -1,7 +1,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const Document = require("./Document");
-
+const cors = require("cors");
 mongoose.connect(
   "mongodb+srv://Quicknotes:Quicknotes@quicknotes.rfuqvid.mongodb.net/quick-notes?retryWrites=true&w=majority"
 );
@@ -29,6 +29,7 @@ io.on("connection", (socket) => {
     });
   });
 });
+io.use(cors());
 // find if the documentid exist else create a new document
 async function Focd(id) {
   if (id == null) return;
