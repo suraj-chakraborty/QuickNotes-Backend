@@ -4,7 +4,13 @@ const http = require("http");
 const mongoose = require("mongoose");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "https://quick-notes-frontend.vercel.app/",
+    method: ["GET", "POST"],
+    credentials: true,
+  },
+});
 const Document = require("./Document");
 const cors = require("cors");
 
