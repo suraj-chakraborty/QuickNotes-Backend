@@ -1,9 +1,10 @@
-require("dotenv").config();
+const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
 const Document = require("./Document");
 const cors = require("cors");
 const http = require("http");
-const server = http.createServer(Document);
+const server = http.createServer(app);
 const { Server } = require("socket.io");
 
 mongoose.connect(
@@ -11,7 +12,7 @@ mongoose.connect(
 );
 const io = new Server(server);
 
-io(process.env.PORT || 8080, {
+io = require("socket.io")(process.env.PORT || 8080, {
   cors: {
     origin: "https://quick-notes-frontend.vercel.app",
     method: ["GET", "POST"],

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "fix":"npm audit fix"
+    "fix": "npm audit fix"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
+    "express": "^4.18.1",
     "mongoose": "^6.0.8",
     "socket.io": "^4.2.0"
   }
