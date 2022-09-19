@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Document = require("./Document");
 const cors = require("cors");
 const http = require("http");
-const server = http.createServer(app);
+const server = http.createServer(Document);
 const { Server } = require("socket.io");
 
 mongoose.connect(
