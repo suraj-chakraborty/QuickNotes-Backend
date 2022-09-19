@@ -6,11 +6,11 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
-    origin: "https://quick-notes-frontend.vercel.app",
+    origin: ["https://quick-notes-frontend.vercel.app"],
     method: ["GET", "POST"],
     credentials: true,
   },
-  allowEI03:true,
+  allowEI03: true,
   loadBalancingMethod: "least-connection",
 });
 const Document = require("./Document");
