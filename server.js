@@ -10,6 +10,7 @@ const io = new Server(server, {
     method: ["GET", "POST"],
     credentials: true,
   },
+  allowEI03:true,
   loadBalancingMethod: "least-connection",
 });
 const Document = require("./Document");
