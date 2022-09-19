@@ -1,4 +1,9 @@
-const mongoose = require("mongoose");
+const express = require("express");
+const app = express();
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 const Document = require("./Document");
 const cors = require("cors");
 
@@ -6,13 +11,13 @@ mongoose.connect(
   "mongodb+srv://Quicknotes:Quicknotes@quicknotes.rfuqvid.mongodb.net/quick-notes?retryWrites=true&w=majority"
 );
 
-const io = require("socket.io")(process.env.PORT || 8080, {
-  cors: {
-    origin: "https://quick-notes-frontend.vercel.app",
-    method: ["GET", "POST"],
-    credentials: true,
-  },
-});
+// const io = require("socket.io")(process.env.PORT || 8080, {
+//   cors: {
+//     origin: "https://quick-notes-frontend.vercel.app",
+//     method: ["GET", "POST"],
+//     credentials: true,
+//   },
+// });
 io.use(cors());
 const defaultValue = "";
 
@@ -31,6 +36,11 @@ io.on("connection", (socket) => {
     });
   });
 });
+
+server.listen(process.env.PORT || 8080, () => {
+  console.log(`listening on ${PORT}`);
+});
+
 // find if the documentid exist else create a new document
 async function Focd(id) {
   if (id == null) return;
