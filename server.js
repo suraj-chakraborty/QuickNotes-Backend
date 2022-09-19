@@ -39,7 +39,7 @@ io.on("connection", (socket) => {
 });
 
 server.listen(process.env.PORT || 8080, () => {
-  console.log(`listening on ${PORT}`);
+  console.log("listening on 8080");
 });
 
 // find if the documentid exist else create a new document
