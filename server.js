@@ -10,6 +10,7 @@ const io = new Server(server, {
     method: ["GET", "POST"],
     credentials: true,
   },
+  loadBalancingMethod: "least-connection",
 });
 const Document = require("./Document");
 const cors = require("cors");
@@ -44,8 +45,12 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(process.env.PORT || 8080, () => {
+io.listen(process.env.PORT || 8080, () => {
   console.log("listening on 8080");
+});
+
+io.on("connect_error", (err) => {
+  console.log(`connect_error due to ${err.message}`);
 });
 
 // find if the documentid exist else create a new document
