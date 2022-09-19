@@ -13,7 +13,6 @@ const io = new Server(server, {
   loadBalancingMethod: "least-connection",
 });
 const Document = require("./Document");
-const cors = require("cors");
 
 mongoose.connect(
   "mongodb+srv://Quicknotes:Quicknotes@quicknotes.rfuqvid.mongodb.net/quick-notes?retryWrites=true&w=majority"
@@ -26,7 +25,7 @@ mongoose.connect(
 //     credentials: true,
 //   },
 // });
-io.use(cors());
+
 const defaultValue = "";
 
 io.on("connection", (socket) => {
