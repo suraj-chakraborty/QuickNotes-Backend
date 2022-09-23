@@ -49,7 +49,7 @@ io.on("connection", (socket) => {
   });
 });
 
-io.listen(process.env.PORT || 8080, () => {
+io.listen(process.env.PORT, () => {
   console.log("listening on 8080");
 });
 
