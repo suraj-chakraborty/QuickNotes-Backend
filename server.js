@@ -9,7 +9,6 @@ const io = new Server(server, {
     origin: [
       "https://quick-notes-frontend.vercel.app",
       "https://cute-pear-newt-tux.cyclic.app/",
-      "http://localhost:3000",
     ],
     method: ["GET", "POST"],
     transports: ["polling"],
