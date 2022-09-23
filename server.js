@@ -8,6 +8,7 @@ const io = new Server(server, {
   cors: {
     origin: ["https://quick-notes-frontend.vercel.app"],
     method: ["GET", "POST"],
+    transports: ["websocket"],
     credentials: true,
   },
   allowEI03: true,
