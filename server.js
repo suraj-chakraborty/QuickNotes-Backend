@@ -6,9 +6,13 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
-    origin: ["https://quick-notes-frontend.vercel.app"],
+    origin: [
+      "https://quick-notes-frontend.vercel.app",
+      "https://cute-pear-newt-tux.cyclic.app/",
+      "http://localhost:3000",
+    ],
     method: ["GET", "POST"],
-    transports: ["websocket"],
+    transports: ["polling"],
     credentials: true,
   },
   allowEI03: true,
