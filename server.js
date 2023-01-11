@@ -16,7 +16,7 @@ mongoose.connect(
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000" || process.env.CLIENT_URL,
+    origin: "https://quick-notes-frontend.vercel.app" || process.env.CLIENT_URL,
     methods: ["GET", "POST"],
     credentials: true,
   },
