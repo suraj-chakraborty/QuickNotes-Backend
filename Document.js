@@ -5,6 +5,7 @@ const Document = new Schema(
     _id: { type: String, required: true },
     title: { type: String, default: "Untitled Document" },
     data: { type: Object, default: "" },
+    pageStyle: { type: Object, default: {} },
   },
   { timestamps: true }
 );

@@ -105,10 +105,11 @@ io.on("connection", (socket) => {
       const document = await getOrCreateDocument(documentId);
       socket.join(documentId);
 
-      // Send document data and title
+      // Send document data, title, and pageStyle
       socket.emit("load-document", {
         data: document.data,
         title: document.title || "Untitled Document",
+        pageStyle: document.pageStyle || {},
         updatedAt: document.updatedAt,
       });
 
@@ -136,11 +137,24 @@ io.on("connection", (socket) => {
         }
       });
 
+      // Handle real-time page design & style changes
+      socket.on("update-page-style", async (newPageStyle) => {
+        try {
+          if (newPageStyle && typeof newPageStyle === "object") {
+            await Document.findByIdAndUpdate(documentId, { pageStyle: newPageStyle });
+            socket.broadcast.to(documentId).emit("page-style-updated", newPageStyle);
+          }
+        } catch (err) {
+          console.error(`❌ Error updating page style for ${documentId}:`, err.message);
+        }
+      });
+
       // Handle document saving
-      socket.on("save-document", async ({ data, title }) => {
+      socket.on("save-document", async ({ data, title, pageStyle }) => {
         try {
           const updatePayload = { data };
           if (title) updatePayload.title = title;
+          if (pageStyle) updatePayload.pageStyle = pageStyle;
           await Document.findByIdAndUpdate(documentId, updatePayload);
           socket.emit("save-success", { timestamp: new Date() });
         } catch (err) {
